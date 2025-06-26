@@ -1,0 +1,261 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ApplicationAPI",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/buildings": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Get list of all organizations",
+                "description": "Display all a listing of the organizations.",
+                "operationId": "dc3fe3854b8ad7baa93799355d1c8106",
+                "responses": {
+                    "200": {
+                        "description": "List of organizations"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/organizations/{id}": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Get organization by ID",
+                "description": "Display the specified organizations.",
+                "operationId": "68e75650b204083886e125e02aaa2f4b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization object"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/organizations/by-building/{buildingId}": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Get organizations by building ID",
+                "description": "Get list all organizations in building",
+                "operationId": "b763cadfde65b8869dba7df8506714e8",
+                "parameters": [
+                    {
+                        "name": "buildingId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Filtered organizations"
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/organizations/by-activity/{activityId}": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Get organizations by activity ID (including children)",
+                "description": "Get list all organizations by activity",
+                "operationId": "36bf770303404ac106f8de6f79e74f4f",
+                "parameters": [
+                    {
+                        "name": "activityId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Filtered organizations"
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/organizations/search": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Search organizations by name",
+                "description": "Search organization by name",
+                "operationId": "82c14e88e2aff3b9bf393d56887a773a",
+                "parameters": [
+                    {
+                        "name": "name_organization",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Search results"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/organizations/search/by_activity": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Search organizations by activity name (hierarchical)",
+                "description": "Search organizations by activity name",
+                "operationId": "a72eaf311fcf216c21e707777590dadb",
+                "parameters": [
+                    {
+                        "name": "name_activity",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Search results"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/organizations/within-radius": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Search organizations within radius",
+                "description": "Search organizations within radius",
+                "operationId": "5b98701c231c6cf6c6d6d1b13958de02",
+                "parameters": [
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float"
+                        }
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float"
+                        }
+                    },
+                    {
+                        "name": "radius",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Search results"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "ApiKeyAuth": {
+                "type": "apiKey",
+                "name": "X-API-KEY",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Organizations",
+            "description": "API Endpoints for Organizations"
+        }
+    ]
+}
