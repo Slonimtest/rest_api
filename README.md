@@ -139,17 +139,6 @@ sudo docker compose up --build
 docker compose down
 ```
 
----
-
-## ❗️ Возможные ошибки
-
-| Ошибка | Причина | Решение |
-|------|------|------|
-| `SQLSTATE[HY000] [2002] Connection refused` | Laravel не может подключиться к MySQL | Проверь DB_HOST, DB_PORT, доступность контейнера MySQL |
-| `Permission denied: /var/www/storage/logs/laravel.log` | Нет прав на запись | Выполни: `docker exec -it laravel_app bash` → `chmod -R 777 storage` |
-
----
-
 ## 🧑‍💻 Автор
 
 **Александр**  
