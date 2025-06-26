@@ -1,5 +1,5 @@
 
-# 📦 Laravel Prices API (Docker + MySQL + NGINX)
+# 📦 Laravel Rest API (Docker + MySQL + NGINX)
 
 Проект на Laravel для работы с rest API.  
 Сборка и запуск осуществляются через Docker (PHP, MySQL, NGINX).
