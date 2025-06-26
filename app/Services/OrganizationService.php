@@ -160,9 +160,8 @@ class OrganizationService
         $matched = Activitie::where('name', 'like', "%{$activityName}%")->get();
 
         $activityIds = [];
-        if (!$matched) {
+        if ($matched !== null || $matched->isEmpty()) {
             foreach ($matched as $act) {
-                dd($act);
                 if ($act->parent_id === null) {
                     $activityIds[] = $act->id;
                     $children = Activitie::where('parent_id', $act->id)->pluck('id')->toArray();

@@ -219,7 +219,7 @@ class OrganizationController extends ApiController
 
         $organizations = $this->service->searchByActivityName($request['name_activity']);
 
-        if ($organizations->isEmpty()) {
+        if ($organizations === null || $organizations->isEmpty()) {
             return $this->exceptionResponse('Not Found', Response::HTTP_NOT_FOUND);
         }
 
@@ -251,7 +251,7 @@ class OrganizationController extends ApiController
 
         $organizations = $this->service->searchWithinRadius($request['lat'], $request['lng'], $request['radius']);
 
-        if ($organizations->isEmpty()) {
+        if ($organizations === null || $organizations->isEmpty()) {
             return $this->exceptionResponse('Not found organization in radus', Response::HTTP_NOT_FOUND);
         }
 
