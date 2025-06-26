@@ -1,7 +1,7 @@
 
 # 📦 Laravel Prices API (Docker + MySQL + NGINX)
 
-Проект на Laravel для работы с API цен (Prices API).  
+Проект на Laravel для работы с rest API.  
 Сборка и запуск осуществляются через Docker (PHP, MySQL, NGINX).
 
 ---
@@ -20,8 +20,8 @@
 ### 1. Клонирование репозитория
 
 ```bash
-git clone https://github.com/your-username/laravel-prices.git
-cd laravel-prices
+git clone https://github.com/Slonimtest/rest_api.git
+cd rest_api
 ```
 
 ### 2. Создание .env
@@ -47,9 +47,11 @@ LOG_LEVEL=debug
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
-DB_DATABASE=prices_db
+DB_DATABASE=rest_api
 DB_USERNAME=laravel
 DB_PASSWORD=secret
+
+API_KEY=1234567890abcdefghijklmnopqrstuvwxyz
 ```
 
 ---
@@ -89,9 +91,10 @@ php artisan db:seed --force
 ## 📡 API Endpoints
 
 Пример запроса к API после запуска:
+Все эндпоинты защищены и в авторизации необходимо указать тип API_key и указать ключ X-API-KEY, значение API_KEY=1234567890abcdefghijklmnopqrstuvwxyz из env
 
 ```
-GET http://localhost:8089/api/prices?currency=USD
+GET http://localhost:8089/api/buildings
 ```
 
 Порты можно менять в `docker-compose.yml` и `.env`.
